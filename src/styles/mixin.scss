@@ -1,0 +1,23 @@
+@import "./font.scss";
+
+@mixin desktop {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 375px) {
+    @content;
+  }
+}
+
+@mixin fontRegular {
+  font-family: $font-family;
+  font-weight: $font-family-regular;
+}
+
+@mixin fontBold {
+  font-family: $font-family;
+  font-weight: $font-family-bold;
+}
