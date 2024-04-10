@@ -16,7 +16,7 @@ const GET_TODOS = gql`
     }
   }
 `;
-export default function TodoPages() {
+export default function TodoPage() {
   const { loading, data } = useQuery(GET_TODOS);
 
   return (

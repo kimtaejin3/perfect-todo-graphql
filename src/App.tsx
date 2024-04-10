@@ -1,12 +1,12 @@
 import { Provider } from "./ApolloProvider";
 import "./styles/global.scss";
 import "./styles/reset.css";
-import TodoPages from "./pages/TodoPage";
+import TodoPage from "./pages/TodoPage";
 
 function App() {
   return (
     <Provider>
-      <TodoPages />
+      <TodoPage />
     </Provider>
   );
 }
