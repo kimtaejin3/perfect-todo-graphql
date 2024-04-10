@@ -1,25 +1,14 @@
 import classNames from "classnames/bind";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import styles from "./TodoPage.module.scss";
 import Wrapper from "../layout/Wrapper";
 import backgroundCover from "../assets/bg-desktop-light.jpg";
 import iconMoon from "../assets/icon-moon.svg";
 import { useState } from "react";
+import { GET_TODOS } from "../graphql/todo";
 
 const cx = classNames.bind(styles);
 
-const GET_TODOS = gql`
-  query {
-    todoCollection {
-      edges {
-        node {
-          content
-          isCompleted
-        }
-      }
-    }
-  }
-`;
 export default function TodoPage() {
   const { loading, data } = useQuery(GET_TODOS);
   const [todo, setTodo] = useState("");
