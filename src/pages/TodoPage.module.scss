@@ -1,4 +1,107 @@
+@import "../styles/global.scss";
+
 .title {
   font-size: 4rem;
-  color: red;
+  color: #fff;
+  letter-spacing: 1.8rem;
+  @include fontBold;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+}
+
+.contents {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.background img {
+  width: 100%;
+}
+
+.header {
+  padding: 5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputField {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  @include commonRadius;
+  @include commonPadding;
+}
+
+.inputField input {
+  @include fontBold;
+  font-size: 1.8rem;
+  width: 100%;
+}
+
+.inputField input::placeholder {
+  @include fontBold;
+  font-size: 1.8rem;
+}
+
+.checkArea {
+  width: 10px;
+  height: 10px;
+  border: 1px solid $color-dark-grayish-blue;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.todos {
+  background-color: #fff;
+  margin-top: 2.4rem;
+  @include commonRadius;
+  box-shadow: 0 0 16px 3px rgba(0, 0, 0, 0.1);
+}
+
+.todoArea {
+  height: 426px;
+  overflow-y: scroll;
+}
+
+.todoArea::-webkit-scrollbar {
+  width: 0;
+}
+
+.todoArea::-webkit-scrollbar-thumb {
+  background-color: red;
+  width: 10px;
+}
+
+.todo {
+  display: flex;
+  align-items: center;
+  padding: 1.4rem 1rem;
+  gap: 1.4rem;
+  font-size: 1.8rem;
+  border-bottom: 1px solid $color-light-grayish-blue;
+
+  @include fontRegular;
+  @include commonPadding;
+}
+
+.todoFooter {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  @include fontRegular;
+  @include commonPadding;
+}
+
+.todoControl {
+  display: flex;
+  gap: 1.3rem;
 }

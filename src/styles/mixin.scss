@@ -12,6 +12,14 @@
   }
 }
 
+@mixin commonRadius {
+  border-radius: 0.4rem;
+}
+
+@mixin commonPadding {
+  padding: 1.8rem 1.4rem;
+}
+
 @mixin fontRegular {
   font-family: $font-family;
   font-weight: $font-family-regular;
