@@ -12,3 +12,18 @@ export const GET_TODOS = gql`
     }
   }
 `;
+
+export const ADD_TODO = gql`
+  mutation ($content: String!, $isCompleted: Boolean!) {
+    insertIntotodoCollection(
+      objects: [{ content: $content, isCompleted: $isCompleted }]
+    ) {
+      affectedCount
+      records {
+        id
+        content
+        isCompleted
+      }
+    }
+  }
+`;

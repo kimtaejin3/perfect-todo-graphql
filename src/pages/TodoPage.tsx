@@ -1,17 +1,26 @@
 import classNames from "classnames/bind";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import styles from "./TodoPage.module.scss";
 import Wrapper from "../layout/Wrapper";
 import backgroundCover from "../assets/bg-desktop-light.jpg";
 import iconMoon from "../assets/icon-moon.svg";
-import { useState } from "react";
-import { GET_TODOS } from "../graphql/todo";
+import { FormEvent, useState } from "react";
+import { ADD_TODO, GET_TODOS } from "../graphql/todo";
 
 const cx = classNames.bind(styles);
 
 export default function TodoPage() {
   const { loading, data } = useQuery(GET_TODOS);
   const [todo, setTodo] = useState("");
+  const [addTodo, { loading: addLoaindg }] = useMutation(ADD_TODO, {
+    refetchQueries: [GET_TODOS],
+  });
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    addTodo({ variables: { content: todo, isCompleted: false } });
+    setTodo("");
+  };
 
   return (
     <div>
@@ -26,12 +35,16 @@ export default function TodoPage() {
           </div>
           <div className={cx("inputField")}>
             <div className={cx("checkArea")}></div>
-            <input
-              value={todo}
-              onChange={(e) => setTodo(e.target.value)}
-              type="text"
-              placeholder="Create a new todo..."
-            />
+            <form className={cx("inputForm")} onSubmit={handleSubmit}>
+              <input
+                value={todo}
+                onChange={(e) => setTodo(e.target.value)}
+                type="text"
+                placeholder="Create a new todo..."
+                disabled={addLoaindg}
+              />
+              {addLoaindg && <div>loading...</div>}
+            </form>
           </div>
           <div className={cx("todos")}>
             <div className={cx("todoArea")}>
